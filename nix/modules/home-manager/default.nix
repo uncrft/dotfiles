@@ -3,6 +3,9 @@ let
   dotfiles = ../../..;
 in
 {
+  imports = [
+    ./packages/git-branch-stash.nix
+  ];
   # home-manager configuration
   home = {
     stateVersion = "24.05";
@@ -31,7 +34,6 @@ in
       # fzf plugins
       fzf-git-sh
       # zsh plugins
-      nix-zsh-completions
       zsh-completions
       zsh-fast-syntax-highlighting
       zsh-fzf-tab
