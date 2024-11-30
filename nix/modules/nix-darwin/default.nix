@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, settings, ... }: {
   # darwin preferences and configuration
   environment = {
     shells = with pkgs; [
@@ -33,7 +33,7 @@
         "zoom"
       ];
     };
-    hostPlatform = "aarch64-darwin";
+    hostPlatform = settings.system;
   };
   fonts = {
     packages = [

@@ -1,7 +1,4 @@
-{ config, lib, pkgs, ... }:
-let
-  dotfiles = ../../..;
-in
+{ config, lib, pkgs, settings, ... }:
 {
   imports = [
     ./packages/git-branch-stash.nix
@@ -9,13 +6,14 @@ in
   # home-manager configuration
   home = {
     stateVersion = "24.05";
-    homeDirectory = /Users/maxime.doury;
+    homeDirectory = settings.homeDirectory;
     preferXdgDirectories = true;
     packages = with pkgs; [
       # dev
       corepack_latest
       bun
       nodePackages_latest.vercel
+      wezterm
       # ui
       aerospace
       jankyborders
@@ -59,26 +57,25 @@ in
   };
   xdg = {
     enable = true;
-    configFile = {
+    configFile = with config.lib.file; {
       # https://github.com/nikitabobko/AeroSpace
       aerospace = {
-        source = "${dotfiles}/aerospace";
-        recursive = true;
+        source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/aerospace";
       };
       # https://github.com/FelixKratz/JankyBorders
       borders = {
-        source = "${dotfiles}/borders";
-        recursive = true;
+        source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/borders";
       };
       # https://github.com/neovim/neovim
       nvim = {
-        source = "${dotfiles}/nvim";
-        recursive = true;
+        source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/nvim";
       };
       # https://github.com/FelixKratz/SketchyBar
       sketchybar = {
-        source = "${dotfiles}/sketchybar";
-        recursive = true;
+        source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/sketchybar";
+      };
+      wezterm = {
+        source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/wezterm";
       };
       # https://github.com/sharkdp/vivid
       "vivid/themes/tokyonight.yml" =
@@ -337,11 +334,11 @@ in
         };
       };
     };
-    wezterm = {
-      enable = true;
-      enableZshIntegration = true;
-      extraConfig = builtins.readFile "${dotfiles}/wezterm/wezterm.lua";
-    };
+    # wezterm = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   extraConfig = builtins.readFile config.lib.file.mkOutOfStoreSymlink "${settings.dotfilesDir}/wezterm/wezterm.lua";
+    # };
     zoxide = {
       enable = true;
       enableZshIntegration = true;

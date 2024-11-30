@@ -16,8 +16,6 @@
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
-
-    # Optional: Declarative tap management
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -40,48 +38,58 @@
     , homebrew-bundle
     , ...
     }:
+    let
+      user = "maxime.doury";
+      homeDirectory = "/Users/${user}";
+
+      settings = {
+        inherit user;
+        inherit homeDirectory;
+        dotfilesDirectory = "${homeDirectory}/.dotfiles";
+        host = "OCTO-MAC-WYH6TXMFWD";
+        system = "aarch64-darwin";
+      };
+    in
     {
-      darwinConfigurations."OCTO-MAC-WYH6TXMFWD" = nix-darwin.lib.darwinSystem {
-        modules = [
-          ./modules/nix-darwin
-          home-manager.darwinModules.home-manager
-          {
-            users.users."maxime.doury".home = /Users/maxime.doury;
-            home-manager = {
-              backupFileExtension = "backup";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users."maxime.doury".imports = [
-                ./modules/home-manager
-              ];
-            };
-          }
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              # Install Homebrew under the default prefix
-              enable = true;
+      darwinConfigurations = {
+        ${ settings.host} = nix-darwin.lib.darwinSystem {
+          specialArgs = {
+            inherit settings;
+          };
+          modules = [
+            ./modules/nix-darwin
+            home-manager.darwinModules.home-manager
+            {
 
-              # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-              enableRosetta = true;
-
-              # User owning the Homebrew prefix
-              user = "maxime.doury";
-
-              # Optional: Declarative tap management
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "homebrew/homebrew-bundle" = homebrew-bundle;
+              users.users.${settings.user}.home = settings.homeDirectory;
+              home-manager = {
+                backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  inherit settings;
+                };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${settings.user}.imports = [
+                  ./modules/home-manager
+                ];
               };
-
-              # Optional: Enable fully-declarative tap management
-              #
-              # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-              mutableTaps = false;
-            };
-          }
-        ];
+            }
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = true;
+                user = settings.user;
+                taps = {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                };
+                mutableTaps = false;
+              };
+            }
+          ];
+        };
       };
     };
 }
