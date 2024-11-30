@@ -1,6 +1,7 @@
 { config, lib, pkgs, settings, ... }:
 {
   imports = [
+    ./packages/git.nix
     ./packages/git-branch-stash.nix
     ./packages/fzf.nix
     ./packages/zsh.nix
@@ -24,9 +25,6 @@
       curl
       neovim-unwrapped
       vivid
-      # git plugins
-      git-stack
-      git-branchless
     ];
     sessionVariables = {
       CLICOLOR = 1;
@@ -39,7 +37,6 @@
     shellAliases = {
       rebuild = "darwin-rebuild switch --flake ~/.dotfiles/nix";
       cat = "bat";
-      g = "git";
       p = "pnpm";
       v = "nvim";
       vi = "nvim";
@@ -128,64 +125,6 @@
         pager = "delta";
       };
     };
-    git = {
-      enable = true;
-      userEmail = "maxime.doury@kraken.tech";
-      userName = "Maxime Doury";
-      aliases = {
-        co = "checkout";
-        br = "branch";
-        c = "commit";
-        st = "status";
-        unstage = "reset HEAD - -";
-        last = "log -1 --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" HEAD";
-        cp = "cherry-pick";
-        ls = "log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate";
-        ll = "log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat";
-        recommit = "!git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG";
-        next = "stack next";
-        prev = "stack previous";
-        reword = "stack reword";
-        amend = "stack amend";
-        sync = "stack sync";
-        run = "stack run";
-      };
-      delta = {
-        enable = true;
-        options = {
-          navigate = true;
-          side-by-side = true;
-          line-numbers = true;
-          true-color = "always";
-          features = "tokyonight";
-        };
-      };
-      includes = [
-        {
-          path = "${config.xdg.configHome}/delta/themes.gitconfig";
-        }
-      ];
-      extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
-        push = {
-          autoSetupRemote = true;
-        };
-        pull = {
-          rebase = true;
-        };
-        core = {
-          ignorecase = false;
-        };
-        merge = {
-          conflictstyle = "diff3";
-        };
-        diff = {
-          colorMoved = "default";
-        };
-      };
-    };
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -230,7 +169,6 @@
         };
         git_state = {
           format = "[\($state( $progress_current/$progress_total)\) ](bg:green1 fg:bg)";
-
         };
         cmd_duration = {
           format = "[ $duration](bg:blue6 fg:teal bold)";
