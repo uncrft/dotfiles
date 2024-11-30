@@ -137,7 +137,7 @@
         unstage = "reset HEAD - -";
         last = "log -1 --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" HEAD";
         cp = "cherry-pick";
-        ls = "log - -pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate";
+        ls = "log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate";
         ll = "log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat";
         recommit = "!git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG";
         next = "stack next";
