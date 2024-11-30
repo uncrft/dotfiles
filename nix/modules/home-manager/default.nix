@@ -2,6 +2,7 @@
 {
   imports = [
     ./packages/git-branch-stash.nix
+    ./packages/fzf.nix
     ./packages/zsh.nix
   ];
   # home-manager configuration
@@ -21,16 +22,11 @@
       sketchybar
       # cli
       curl
-      fd
-      jq
       neovim-unwrapped
-      ripgrep
-      tmux
       vivid
       # git plugins
       git-stack
       git-branchless
-      # fzf plugins
     ];
     sessionVariables = {
       CLICOLOR = 1;
@@ -115,62 +111,6 @@
       extraOptions = [ "--group-directories-first" "--header" ];
       git = true;
       icons = "auto";
-    };
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-      defaultCommand = ''
-        (
-          fd - -exact-depth 1 - -type f - -strip-cwd-prefix - -hidden - -exclude '.git|~/Library' - -color= always;
-          fd --exact-depth 2 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-          fd --exact-depth 3 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-          fd --exact-depth 4 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-          fd --min-depth 5 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-        ) | cat
-      '';
-      colors = {
-        "bg" = "#1a1b26";
-        "bg+" = "#292e42";
-        "fg" = "#c0caf5";
-        "fg+" = "#c0caf5";
-        "header" = "#9ece6a";
-        "hl" = "#ff9e64";
-        "hl+" = "#ff9e64";
-        "info" = "#7aa2f7";
-        "marker" = "#9ece6a";
-        "pointer" = "#7dcfff";
-        "prompt" = "#7dcfff";
-        "spinner" = "#9ece6a";
-      };
-      defaultOptions = [
-        "--ansi"
-        "--reverse"
-        "--tabstop 2"
-        "--border rounded"
-        "--prompt '❯ '"
-        "--pointer=''"
-        "--marker='﫠'"
-      ];
-      changeDirWidgetCommand = "fd --type d --strip-cwd-prefix --hidden --follow --exclude .git --color=always";
-      changeDirWidgetOptions = [
-        "--ansi"
-        "--preview 'tree -C {} | head -200'"
-        "--preview-window border-rounded"
-      ];
-      fileWidgetCommand = ''
-        (
-          fd - -exact-depth 1 - -type f - -strip-cwd-prefix - -hidden - -exclude '.git|~/Library' - -color= always;
-          fd --exact-depth 2 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-          fd --exact-depth 3 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-          fd --exact-depth 4 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-          fd --min-depth 5 --type f --strip-cwd-prefix --hidden --exclude '.git|~/Library' --color = always;
-        ) | cat
-      '';
-      fileWidgetOptions = [
-        "--ansi"
-        "--preview 'bat --style=numbers --color=always --line-range :500 {} --tabs 2'"
-        "--preview-window border-rounded"
-      ];
     };
     gh = {
       enable = true;
