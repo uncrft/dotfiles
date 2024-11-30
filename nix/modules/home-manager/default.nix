@@ -57,6 +57,9 @@
       borders = {
         source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/borders";
       };
+      delta = {
+        source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/delta";
+      };
       # https://github.com/neovim/neovim
       nvim = {
         source = mkOutOfStoreSymlink "${settings.dotfilesDirectory}/nvim";
@@ -159,7 +162,7 @@
       };
       includes = [
         {
-          path = "${config.xdg.configHome}/git/delta-themes.gitconfig";
+          path = "${config.xdg.configHome}/delta/themes.gitconfig";
         }
       ];
       extraConfig = {
