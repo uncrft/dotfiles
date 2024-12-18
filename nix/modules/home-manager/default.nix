@@ -23,6 +23,7 @@
       sketchybar
       # cli
       curl
+      hyperfine
       neovim-unwrapped
       vivid
     ];
@@ -31,7 +32,6 @@
       EDITOR = "nvim";
       FORCE_COLOR = 1;
       LS_COLOR = "$(vivid generate ${config.xdg.configHome}/vivid/themes/tokyonight.yml)";
-      PAGER = "bat";
       TURBO_UI = "true";
     };
     shellAliases = {
@@ -209,6 +209,9 @@
           };
         };
       };
+    };
+    jq = {
+      enable = true;
     };
     # wezterm = {
     #   enable = true;
