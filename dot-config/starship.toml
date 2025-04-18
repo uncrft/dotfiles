@@ -1,0 +1,35 @@
+add_newline = false
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$character"""
+
+[directory]
+style = "#4FD6BE"
+
+[character]
+success_symbol = "[❯](#4FD6BE)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](#4FD6BE)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "white"
+
+[git_status]
+format = "[$conflicted$untracked$modified$staged$renamed$deleted$ahead_behind$stashed]($style) "
+style = "purple"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "white"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"

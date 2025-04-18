@@ -1,0 +1,6 @@
+.git/*
+.gitignore
+.gitmodules
+Makefile
+README.md
+setup.sh

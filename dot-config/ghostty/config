@@ -1,0 +1,72 @@
+theme = tokyonight
+background = #000000
+background-opacity = 0.6
+font-family = GeistMono NFM
+
+macos-window-shadow = false
+macos-option-as-alt = true
+
+# keybind=clear
+
+keybind = super+a=select_all
+keybind = super+k=clear_screen
+keybind = super+n=new_window
+keybind = super+q=quit
+keybind = super+w=close_surface
+keybind = ctrl+shift+w=close_surface
+
+keybind = super+equal=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = super+shift+v=paste_from_selection
+keybind = super+shift+j=write_scrollback_file:paste
+keybind = super+alt+shift+j=write_scrollback_file:open
+
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+keybind = super+left=text:\x01
+keybind = super+right=text:\x05
+keybind = super+backspace=text:\x15
+
+keybind = super+up=jump_to_prompt:-1
+keybind = super+down=jump_to_prompt:1
+
+keybind = ctrl+shift+home=scroll_to_top
+keybind = ctrl+shift+end=scroll_to_bottom
+keybind = ctrl+shift+page_up=scroll_page_up
+keybind = ctrl+shift+page_down=scroll_page_down
+
+keybind = shift+home=adjust_selection:home
+keybind = shift+end=adjust_selection:end
+keybind = shift+page_up=adjust_selection:page_up
+keybind = shift+page_down=adjust_selection:page_down
+keybind = shift+left=adjust_selection:left
+keybind = shift+down=adjust_selection:down
+keybind = shift+up=adjust_selection:up
+keybind = shift+right=adjust_selection:right
+
+keybind = ctrl+shift+comma=reload_config
+keybind = ctrl+alt+i=inspector:toggle
+
+keybind = ctrl+shift+n=goto_split:left
+keybind = ctrl+shift+e=goto_split:down
+keybind = ctrl+shift+i=goto_split:up
+keybind = ctrl+shift+o=goto_split:right
+keybind = ctrl+shift+left_bracket=goto_split:previous
+keybind = ctrl+shift+right_bracket=goto_split:next
+
+keybind = ctrl+shift+left=new_split:left
+keybind = ctrl+shift+down=new_split:down
+keybind = ctrl+shift+up=new_split:up
+keybind = ctrl+shift+right=new_split:right
+
+keybind = ctrl+shift+a=resize_split:left,10
+keybind = ctrl+shift+r=resize_split:down,10
+keybind = ctrl+shift+s=resize_split:up,10
+keybind = ctrl+shift+t=resize_split:right,10
+
+keybind = ctrl+shift+f=toggle_split_zoom
+keybind = ctrl+shift+equal=equalize_splits
+

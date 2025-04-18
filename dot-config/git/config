@@ -1,0 +1,62 @@
+[include]
+  # Define [user] name, email, signingkey
+  path = user
+[core]
+  ignorecase = true
+  pager = delta
+  untrackedCache = true
+[delta]
+  hyperlinks = true
+  line-numbers = true
+  navigate = true
+  side-by-side = true
+  true-color = always
+  # tokyonight
+  minus-style                   = syntax "#37222c"
+  minus-non-emph-style          = syntax "#37222c"
+  minus-emph-style              = syntax "#713137"
+  minus-empty-line-marker-style = syntax "#37222c"
+  line-numbers-minus-style      = "#914c54"
+  plus-style                    = syntax "#20303b"
+  plus-non-emph-style           = syntax "#20303b"
+  plus-emph-style               = syntax "#2c5a66"
+  plus-empty-line-marker-style  = syntax "#20303b"
+  line-numbers-plus-style       = "#449dab"
+  line-numbers-zero-style       = "#3b4261"
+[gpg]
+  format = ssh
+[init]
+  defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[commit]
+  gpgsign = true
+[diff]
+  colorMoved = default
+[fetch]
+  prune = true
+[merge]
+  conflictstyle = diff3
+[pull]
+  prune = true
+  rebase = true
+[push]
+  autoSetupRemote = true
+  default = simple
+  followTags = true
+[rerere]
+  enabled = true
+[alias]
+  amend = commit --amend
+  c = commit
+  co = checkout
+  cp = "cherry-pick";
+  fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+  last = "log -1 --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" HEAD";
+  ll = "log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat";
+  ls = "log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate";
+  pf = push --force-with-lease
+  recommit = "!git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG";
+  s = "!git add -A; git status"
+  st = status
+  unstage = restore --staged

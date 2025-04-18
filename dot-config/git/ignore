@@ -1,0 +1,5 @@
+# Global gitignore
+.DS_Store
+.vscode
+.env
+*.swp

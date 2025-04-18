@@ -1,0 +1,12 @@
+[submodule "fzf-tab"]
+	path = dot-config/zsh/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab
+[submodule "fzf-git"]
+	path = dot-config/zsh/plugins/fzf-git
+	url = https://github.com/junegunn/fzf-git.sh
+[submodule "fzf-tab-source"]
+	path = dot-config/zsh/plugins/fzf-tab-source
+	url = https://github.com/Freed-Wu/fzf-tab-source
+[submodule "zsh-defer"]
+	path = dot-config/zsh/plugins/zsh-defer
+	url = https://github.com/romkatv/zsh-defer
