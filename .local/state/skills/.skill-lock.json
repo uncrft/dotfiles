@@ -1,0 +1,125 @@
+{
+  "version": 3,
+  "skills": {
+    "add-change": {
+      "source": "dmno-dev/bumpy",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/dmno-dev/bumpy.git",
+      "skillPath": "skills/add-change/SKILL.md",
+      "skillFolderHash": "2369fa646606155078cd19fc9e6a824eb0f8b14d",
+      "installedAt": "2026-07-30T08:27:36.724Z",
+      "updatedAt": "2026-07-30T08:27:36.724Z"
+    },
+    "gh-stack": {
+      "source": "github/gh-stack",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/github/gh-stack.git",
+      "skillPath": "skills/gh-stack/SKILL.md",
+      "skillFolderHash": "c29ba25c9c07534c27f1a3253bd0ca3846c4f8c7",
+      "installedAt": "2026-08-07T18:32:29.869Z",
+      "updatedAt": "2026-08-07T18:32:29.869Z"
+    },
+    "next-best-practices": {
+      "source": "vercel-labs/openreview",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/openreview.git",
+      "skillPath": ".agents/skills/next-best-practices/SKILL.md",
+      "skillFolderHash": "ad17eb27952b39a6ab0061bd50e8a2213b63a3ec",
+      "installedAt": "2026-08-12T09:07:36.162Z",
+      "updatedAt": "2026-08-12T09:07:36.162Z"
+    },
+    "next-cache-components": {
+      "source": "vercel-labs/next-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/next-skills.git",
+      "skillPath": "skills/next-cache-components/SKILL.md",
+      "skillFolderHash": "47429bd18c8a59fa5b7e9a656f71b728cf67ed5e",
+      "installedAt": "2026-02-01T09:30:29.123Z",
+      "updatedAt": "2026-02-01T09:30:29.123Z"
+    },
+    "next-cache-components-adoption": {
+      "source": "vercel/next.js",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel/next.js.git",
+      "skillPath": "skills/next-cache-components-adoption/SKILL.md",
+      "skillFolderHash": "80edd849e131a7def656f8fec5eb42c0e32ac308",
+      "installedAt": "2026-08-12T09:06:38.829Z",
+      "updatedAt": "2026-08-12T09:06:38.829Z"
+    },
+    "next-cache-components-optimizer": {
+      "source": "vercel/next.js",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel/next.js.git",
+      "skillPath": "skills/next-cache-components-optimizer/SKILL.md",
+      "skillFolderHash": "03625340d757e8692cb7f1c1fe0261a14d7489bf",
+      "installedAt": "2026-08-12T09:07:08.272Z",
+      "updatedAt": "2026-08-12T09:07:08.272Z"
+    },
+    "next-partial-prefetching-adoption": {
+      "source": "vercel/next.js",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel/next.js.git",
+      "skillPath": "skills/next-partial-prefetching-adoption/SKILL.md",
+      "skillFolderHash": "12faf80de42a2652e9a98621dedc9d7ebb1c859a",
+      "installedAt": "2026-08-12T09:05:53.735Z",
+      "updatedAt": "2026-08-12T09:05:53.735Z"
+    },
+    "next-upgrade": {
+      "source": "vercel-labs/next-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/next-skills.git",
+      "skillPath": "skills/next-upgrade/SKILL.md",
+      "skillFolderHash": "2c67f11197e7b48470009929602cd4e1033c4956",
+      "installedAt": "2026-02-01T09:30:29.152Z",
+      "updatedAt": "2026-02-01T09:30:29.152Z"
+    },
+    "turborepo": {
+      "source": "vercel/turborepo",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel/turborepo.git",
+      "skillPath": "skills/turborepo/SKILL.md",
+      "skillFolderHash": "2f5d5ba030671c5201ef6f1dacc4ee72f9feb472",
+      "installedAt": "2026-07-29T17:54:42.353Z",
+      "updatedAt": "2026-07-29T17:54:42.353Z"
+    },
+    "typescript-advanced-types": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/javascript-typescript/skills/typescript-advanced-types/SKILL.md",
+      "skillFolderHash": "782e78a277e639718b0f9fec905ca51bb16a5a95",
+      "installedAt": "2026-02-01T09:38:27.862Z",
+      "updatedAt": "2026-02-01T09:38:27.862Z"
+    },
+    "vercel-composition-patterns": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/composition-patterns/SKILL.md",
+      "skillFolderHash": "bf90d0a4b83ea054653350f9c67f6de235d3a368",
+      "installedAt": "2026-02-01T09:28:36.020Z",
+      "updatedAt": "2026-02-01T09:28:36.020Z"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "skillFolderHash": "079b06a135401704ea94ab74c7c9d86c92ba259f",
+      "installedAt": "2026-02-01T09:28:36.047Z",
+      "updatedAt": "2026-02-01T09:28:36.047Z"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "skillFolderHash": "3116f3e62dbd02b44a598b1aa690d2a8938e8f89",
+      "installedAt": "2026-08-24T13:16:43.028Z",
+      "updatedAt": "2026-08-24T13:16:43.028Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  }
+}

@@ -1,0 +1,13 @@
+.agents/skills/add-change/** linguist-vendored -whitespace
+.agents/skills/gh-stack/** linguist-vendored -whitespace
+.agents/skills/next-best-practices/** linguist-vendored -whitespace
+.agents/skills/next-cache-components/** linguist-vendored -whitespace
+.agents/skills/next-cache-components-adoption/** linguist-vendored -whitespace
+.agents/skills/next-cache-components-optimizer/** linguist-vendored -whitespace
+.agents/skills/next-partial-prefetching-adoption/** linguist-vendored -whitespace
+.agents/skills/next-upgrade/** linguist-vendored -whitespace
+.agents/skills/turborepo/** linguist-vendored -whitespace
+.agents/skills/typescript-advanced-types/** linguist-vendored -whitespace
+.agents/skills/vercel-composition-patterns/** linguist-vendored -whitespace
+.agents/skills/vercel-react-best-practices/** linguist-vendored -whitespace
+.agents/skills/web-design-guidelines/** linguist-vendored -whitespace

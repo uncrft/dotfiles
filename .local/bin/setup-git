@@ -1,0 +1,48 @@
+#!/bin/sh
+set -eu
+
+personal_config="$HOME/.config/git/user"
+work_config="$HOME/.config/git/work"
+signing_key="$HOME/.ssh/id_ed25519.pub"
+
+if [ -f "$personal_config" ] && [ -f "$work_config" ]; then
+    echo "Git user configuration already exists"
+    exit 0
+fi
+
+if [ ! -t 0 ]; then
+    echo "Git configuration requires an interactive terminal" >&2
+    exit 1
+fi
+
+printf 'Git name: ' >/dev/tty
+IFS= read -r git_name </dev/tty
+printf 'Personal Git email: ' >/dev/tty
+IFS= read -r personal_email </dev/tty
+printf 'Work Git email: ' >/dev/tty
+IFS= read -r work_email </dev/tty
+
+if [ -z "$git_name" ] || [ -z "$personal_email" ] || [ -z "$work_email" ]; then
+    echo "Git name and email fields are required" >&2
+    exit 1
+fi
+
+mkdir -p "$HOME/.config/git"
+umask 077
+personal_tmp=$(mktemp "$HOME/.config/git/user.XXXXXX")
+work_tmp=$(mktemp "$HOME/.config/git/work.XXXXXX")
+trap 'rm -f "$personal_tmp" "$work_tmp"' EXIT HUP INT TERM
+
+git config --file "$personal_tmp" user.name "$git_name"
+git config --file "$personal_tmp" user.email "$personal_email"
+git config --file "$personal_tmp" user.signingkey "$signing_key"
+
+git config --file "$work_tmp" user.name "$git_name"
+git config --file "$work_tmp" user.email "$work_email"
+git config --file "$work_tmp" user.signingkey "$signing_key"
+
+mv "$personal_tmp" "$personal_config"
+mv "$work_tmp" "$work_config"
+trap - EXIT HUP INT TERM
+
+echo "Git user configuration created"

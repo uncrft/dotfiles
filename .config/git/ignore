@@ -1,0 +1,10 @@
+# Global gitignore
+.DS_Store
+.vscode
+.env
+*.swp
+.dependencies
+.rift.toml
+
+**/.claude/settings.local.json
+**/.pi/tasks/

@@ -1,0 +1,9 @@
+{
+  "trustedformulae": [
+    "nubjs/tap/nub"
+  ],
+  "trustedtaps": [
+    "databricks/tap",
+    "oven-sh/bun"
+  ]
+}

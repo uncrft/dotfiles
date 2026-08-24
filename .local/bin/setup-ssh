@@ -1,0 +1,96 @@
+#!/bin/sh
+set -eu
+
+ssh_dir="$HOME/.ssh"
+private_key="$ssh_dir/id_ed25519"
+public_key="$private_key.pub"
+key_title=$(hostname -s)
+
+mkdir -p "$ssh_dir"
+chmod 700 "$ssh_dir"
+
+if [ ! -f "$private_key" ]; then
+    if [ ! -t 0 ]; then
+        echo "SSH key generation requires an interactive terminal" >&2
+        exit 1
+    fi
+
+    ssh-keygen -t ed25519 -f "$private_key" -C "$(whoami)@$(hostname)" </dev/tty
+    echo "SSH key generated"
+else
+    echo "SSH key already exists"
+fi
+
+confirm() {
+    prompt=$1
+
+    if [ ! -t 0 ]; then
+        return 1
+    fi
+
+    printf '%s [y/N] ' "$prompt" >/dev/tty
+    IFS= read -r answer </dev/tty
+    case "$answer" in
+        y|Y|yes|YES|Yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+key_exists() {
+    endpoint=$1
+    key=$(awk '{ print $1 " " $2 }' "$public_key")
+
+    gh api "$endpoint" 2>/dev/null |
+        jq -e --arg key "$key" 'any(.[]; .key == $key)' >/dev/null
+}
+
+if command -v gh >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
+    if ! gh auth status >/dev/null 2>&1; then
+        if [ -t 0 ]; then
+            gh auth login --hostname github.com --git-protocol ssh \
+                --web --clipboard --skip-ssh-key \
+                --scopes admin:public_key,admin:ssh_signing_key
+        else
+            echo "GitHub authentication skipped because no terminal is available"
+        fi
+    fi
+
+    if gh auth status >/dev/null 2>&1; then
+        github_keys_available=true
+        if ! gh api user/keys >/dev/null 2>&1 ||
+           ! gh api user/ssh_signing_keys >/dev/null 2>&1; then
+            if [ -t 0 ]; then
+                gh auth refresh --hostname github.com --clipboard \
+                    --scopes admin:public_key,admin:ssh_signing_key
+            else
+                echo "GitHub key setup skipped because the token lacks SSH key scopes"
+                github_keys_available=false
+            fi
+        fi
+
+        if [ "$github_keys_available" = true ]; then
+            if key_exists user/keys; then
+                echo "SSH authentication key already on GitHub"
+            elif confirm "Upload the SSH authentication key to GitHub?"; then
+                gh ssh-key add "$public_key" --title "$key_title"
+                echo "SSH authentication key uploaded"
+            fi
+
+            if key_exists user/ssh_signing_keys; then
+                echo "SSH signing key already on GitHub"
+            elif confirm "Upload the SSH signing key to GitHub?"; then
+                gh ssh-key add "$public_key" --type signing --title "$key_title"
+                echo "SSH signing key uploaded"
+            fi
+        fi
+    fi
+else
+    echo "GitHub key setup skipped because gh or jq is unavailable"
+fi
+
+if [ -t 0 ]; then
+    ssh-add --apple-use-keychain "$private_key" </dev/tty
+    echo "SSH key added to the macOS keychain"
+else
+    echo "macOS keychain setup skipped because no terminal is available"
+fi

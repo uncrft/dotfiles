@@ -1,0 +1,115 @@
+min_version = "2026.8.12"
+
+[settings]
+lockfile = true
+github.credential_command = 'command -v gh >/dev/null 2>&1 && gh auth token --hostname "$MISE_CREDENTIAL_HOST" 2>/dev/null || true'
+idiomatic_version_file_enable_tools = ["node"]
+
+[env]
+MISE_CARGO_HOME = "{{env.HOME}}/.local/share/cargo"
+MISE_RUSTUP_HOME = "{{env.HOME}}/.local/share/rustup"
+
+[tools]
+aws-cli = "latest"
+bun = "latest"
+node = { version = "lts", postinstall = "corepack enable" }
+op = "latest"
+rust = "latest"
+turbo = "latest"
+uv = "latest"
+zig = "latest"
+"cargo:eza" = { version = "latest", depends = ["rust"] }
+"cargo:git-absorb" = { version = "latest", depends = ["rust"] }
+"cargo:xsv" = { version = "latest", depends = ["rust"] }
+"npm:@opencode-ai/cli" = { version = "beta", depends = ["node"], allow_builds = ["@opencode-ai/cli"] }
+"npm:skills" = { version = "latest", depends = ["node"] }
+"pipx:csvkit" = { version = "latest", depends = ["uv"] }
+"http:jankyborders" = { version = "latest", url = "https://github.com/FelixKratz/JankyBorders/archive/refs/tags/v{{ version }}.tar.gz", version_list_url = "https://api.github.com/repos/FelixKratz/JankyBorders/releases/latest", version_json_path = ".tag_name", strip_components = 1, bin_path = "bin", depends = ["zig"], postinstall = "make -C \"$MISE_TOOL_INSTALL_PATH\" && codesign --force -s - \"$MISE_TOOL_INSTALL_PATH/bin/borders\"" }
+"github:BurntSushi/ripgrep" = "latest"
+"github:anomalyco/rift" = "latest"
+"github:arxanas/git-branchless" = "latest"
+"github:carapace-sh/carapace-bin" = "latest"
+"github:casey/just" = "latest"
+"github:cli/cli" = "latest"
+"github:cloudflare/cloudflared" = "latest"
+"github:dandavison/delta" = "latest"
+"github:earendil-works/pi" = "latest"
+"github:jqlang/jq" = "latest"
+"github:junegunn/fzf" = "latest"
+"github:neovim/neovim" = "latest"
+"github:nikitabobko/AeroSpace" = { version = "latest", prerelease = true, matching = "AeroSpace-", postinstall = "mkdir -p \"$HOME/Applications\" && ln -sfn \"$MISE_TOOL_INSTALL_PATH/AeroSpace.app\" \"$HOME/Applications/AeroSpace.app\"" }
+"github:nushell/nushell" = "latest"
+"github:sharkdp/bat" = "latest"
+"github:sharkdp/fd" = "latest"
+"github:sharkdp/hyperfine" = "latest"
+"github:sharkdp/vivid" = "latest"
+"github:starship/starship" = "latest"
+"github:vercel-labs/agent-browser" = "latest"
+"github:ajeetdsouza/zoxide" = "latest"
+
+[bootstrap.brew]
+adopt = true
+
+[bootstrap.packages]
+"brew:btop" = "latest"
+"brew:chafa" = "latest"
+"brew:exiftool" = "latest"
+"brew:lesspipe" = "latest"
+"brew-cask:arc" = "latest"
+"brew-cask:colemak-dh" = "latest"
+"brew-cask:font-geist-mono-nerd-font" = "latest"
+"brew-cask:ghostty@tip" = "latest"
+"brew-cask:hiddenbar" = "latest"
+"brew-cask:mos" = "latest"
+"brew-cask:raycast" = "latest"
+"brew-cask:vscodium" = "latest"
+"brew-cask:zen" = "latest"
+
+[bootstrap.files."/etc/zshenv"]
+content = '''[[ -f $HOME/.config/zsh/.zshenv ]] && source $HOME/.config/zsh/.zshenv
+'''
+owner = "root"
+group = "wheel"
+mode = "0644"
+
+[bootstrap.files."/etc/pam.d/sudo_local"]
+content = '''# sudo_local: local config file which survives system update and is included for sudo
+# uncomment following line to enable Touch ID for sudo
+auth       sufficient     pam_tid.so
+'''
+owner = "root"
+group = "wheel"
+mode = "0444"
+
+[bootstrap.repos]
+"~/.local/share/zsh/plugins/fast-syntax-highlighting" = { url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git" }
+"~/.local/share/zsh/plugins/fzf-git" = { url = "https://github.com/junegunn/fzf-git.sh.git" }
+"~/.local/share/zsh/plugins/fzf-tab" = { url = "https://github.com/Aloxaf/fzf-tab.git" }
+"~/.local/share/zsh/plugins/zsh-autosuggestions" = { url = "https://github.com/zsh-users/zsh-autosuggestions.git" }
+"~/.local/share/zsh/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
+"~/.local/share/zsh/plugins/zsh-defer" = { url = "https://github.com/romkatv/zsh-defer.git" }
+"~/.local/share/zsh/plugins/zsh-vi-mode" = { url = "https://github.com/jeffreytse/zsh-vi-mode.git" }
+
+[dotfiles]
+"~/.agents" = {}
+"~/.config" = { mode = "symlink-each", exclude = ["ghostty/local*"] }
+"~/.config/ghostty/local" = { source = "~/.dotfiles/.config/ghostty/local.tmpl", mode = "template" }
+"~/.local" = { mode = "symlink-each", exclude = ["state/skills"] }
+"~/.local/state/skills" = {}
+"~/.pi/agent" = { mode = "symlink-each" }
+"~/.ssh" = { mode = "symlink-each" }
+"~/.hushlogin" = {}
+"~/.lessfilter" = {}
+
+[bootstrap.hooks.post-tools]
+run = [
+  "mise exec -- ~/.local/bin/zsh-init",
+  "mise exec -- ~/.local/bin/nu-init",
+]
+
+[tasks.bootstrap]
+description = "Configure account-specific Git and SSH settings"
+run = [
+  "~/.local/bin/setup-git",
+  "~/.local/bin/setup-ssh",
+]

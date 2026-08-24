@@ -1,0 +1,24 @@
+{
+  "lastChangelogVersion": "0.84.2",
+  "packages": [
+    "npm:pi-smart-fetch",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@tintinweb/pi-tasks",
+    "npm:pi-mcp-adapter"
+  ],
+  "editorPaddingX": 0,
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "enableInstallTelemetry": false,
+  "quietStartup": true,
+  "collapseChangelog": true,
+  "transport": "sse",
+  "steeringMode": "all",
+  "followUpMode": "all",
+  "doubleEscapeAction": "tree",
+  "defaultThinkingLevel": "high",
+  "hideThinkingBlock": false,
+  "theme": "dark",
+  "tuiMode": "fullscreen"
+}

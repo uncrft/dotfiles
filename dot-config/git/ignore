@@ -1,7 +1,0 @@
-# Global gitignore
-.DS_Store
-.vscode
-.env
-*.swp
-
-**/.claude/settings.local.json
