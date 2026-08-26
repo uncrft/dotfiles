@@ -254,6 +254,16 @@ checksum = "sha256:d680a7a96ab86e9ab9d2b571b12919b761e93682ad1de714bbd5ac849c8d7
 url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.34.0/agent-browser-darwin-arm64"
 url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/509430073"
 
+[[tools."github:vercel-labs/fx"]]
+version = "0.0.6"
+backend = "github:vercel-labs/fx"
+specifiers = ["latest"]
+
+[tools."github:vercel-labs/fx"."platforms.macos-arm64"]
+checksum = "sha256:9fc18d5c3429adab254cc2b626c9679e866be26496e09d7beb8754f6c1c586c9"
+url = "https://github.com/vercel-labs/fx/releases/download/v0.0.6/fx-macos-aarch64.tar.gz"
+url_api = "https://api.github.com/repos/vercel-labs/fx/releases/assets/528406140"
+
 [[tools.herdr]]
 version = "0.8.2"
 backend = "aqua:herdrdev/herdr"

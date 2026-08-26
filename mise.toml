@@ -22,10 +22,16 @@ zig = "latest"
 "cargo:eza" = { version = "latest", depends = ["rust"] }
 "cargo:git-absorb" = { version = "latest", depends = ["rust"] }
 "cargo:xsv" = { version = "latest", depends = ["rust"] }
-"npm:@opencode-ai/cli" = { version = "beta", depends = ["node"], allow_builds = ["@opencode-ai/cli"] }
+"npm:@opencode-ai/cli" = { version = "beta", depends = [
+  "node",
+], allow_builds = [
+  "@opencode-ai/cli",
+] }
 "npm:skills" = { version = "latest", depends = ["node"] }
 "pipx:csvkit" = { version = "latest", depends = ["uv"] }
-"http:jankyborders" = { version = "latest", url = "https://github.com/FelixKratz/JankyBorders/archive/refs/tags/v{{ version }}.tar.gz", version_list_url = "https://api.github.com/repos/FelixKratz/JankyBorders/releases/latest", version_json_path = ".tag_name", strip_components = 1, bin_path = "bin", depends = ["zig"], postinstall = "make -C \"$MISE_TOOL_INSTALL_PATH\" && codesign --force -s - \"$MISE_TOOL_INSTALL_PATH/bin/borders\"" }
+"http:jankyborders" = { version = "latest", url = "https://github.com/FelixKratz/JankyBorders/archive/refs/tags/v{{ version }}.tar.gz", version_list_url = "https://api.github.com/repos/FelixKratz/JankyBorders/releases/latest", version_json_path = ".tag_name", strip_components = 1, bin_path = "bin", depends = [
+  "zig",
+], postinstall = "make -C \"$MISE_TOOL_INSTALL_PATH\" && codesign --force -s - \"$MISE_TOOL_INSTALL_PATH/bin/borders\"" }
 "github:BurntSushi/ripgrep" = "latest"
 "github:anomalyco/rift" = "latest"
 "github:arxanas/git-branchless" = "latest"
@@ -46,6 +52,7 @@ zig = "latest"
 "github:sharkdp/vivid" = "latest"
 "github:starship/starship" = "latest"
 "github:vercel-labs/agent-browser" = "latest"
+"github:vercel-labs/fx" = "latest"
 "github:ajeetdsouza/zoxide" = "latest"
 
 [bootstrap.brew]
@@ -110,7 +117,4 @@ run = [
 
 [tasks.bootstrap]
 description = "Configure account-specific Git and SSH settings"
-run = [
-  "~/.local/bin/setup-git",
-  "~/.local/bin/setup-ssh",
-]
+run = ["~/.local/bin/setup-git", "~/.local/bin/setup-ssh"]
