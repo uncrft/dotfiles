@@ -17,8 +17,10 @@
   "steeringMode": "all",
   "followUpMode": "all",
   "doubleEscapeAction": "tree",
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "xhigh",
   "hideThinkingBlock": false,
   "theme": "dark",
-  "tuiMode": "fullscreen"
+  "tuiMode": "fullscreen",
+  "defaultProvider": "databricks",
+  "defaultModel": "system.ai.gpt-5-6-sol"
 }
