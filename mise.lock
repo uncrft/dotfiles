@@ -254,6 +254,16 @@ checksum = "sha256:d680a7a96ab86e9ab9d2b571b12919b761e93682ad1de714bbd5ac849c8d7
 url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.34.0/agent-browser-darwin-arm64"
 url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/509430073"
 
+[[tools.herdr]]
+version = "0.8.2"
+backend = "aqua:herdrdev/herdr"
+specifiers = ["latest"]
+
+[tools.herdr."platforms.macos-arm64"]
+checksum = "sha256:a5d4f4d504d8b309c91f811050559300faba31258425f53c50852fc96f6ae574"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.8.2/herdr-macos-aarch64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/521169108"
+
 [[tools."http:jankyborders"]]
 version = "1.9.0"
 backend = "http:jankyborders"

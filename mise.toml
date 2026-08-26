@@ -12,6 +12,7 @@ MISE_RUSTUP_HOME = "{{env.HOME}}/.local/share/rustup"
 [tools]
 aws-cli = "latest"
 bun = "latest"
+herdr = "latest"
 node = { version = "lts", postinstall = "corepack enable" }
 op = "latest"
 rust = "latest"

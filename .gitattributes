@@ -1,5 +1,6 @@
 .agents/skills/add-change/** linguist-vendored -whitespace
 .agents/skills/gh-stack/** linguist-vendored -whitespace
+.agents/skills/herdr/** linguist-vendored -whitespace
 .agents/skills/next-best-practices/** linguist-vendored -whitespace
 .agents/skills/next-cache-components/** linguist-vendored -whitespace
 .agents/skills/next-cache-components-adoption/** linguist-vendored -whitespace

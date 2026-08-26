@@ -20,6 +20,7 @@ The repository uses [mise bootstrap](https://mise.jdx.dev/bootstrap.html) as the
 The setup does not require the Homebrew CLI.
 
 * Standalone CLIs with suitable assets use upstream GitHub releases directly.
+* Herdr uses mise's native registry entry for its official stable GitHub releases.
 * Node.js, Bun, Rust, Zig, and uv use mise's native backends. Corepack inside the managed Node installation supplies PNPM.
 * OpenCode 2 beta, Turbo, and the skills.sh CLI use mise's npm backend; the reviewed skill snapshots remain vendored in the repository.
 * eza, git-absorb, and xsv use mise's Cargo backend because their releases do not include Apple Silicon binaries.
@@ -53,6 +54,7 @@ The built-in brew backends fetch and verify formula bottles and casks directly. 
 
 * **AeroSpace**: tiling window management with Colemak DH navigation
 * **Ghostty**: TokyoNight theme, transparency, Colemak DH splits, and Vim scrollback
+* **Herdr**: persistent agent workspaces with Nushell and Colemak DH pane navigation
 * **Neovim**: LazyVim, Copilot, Colemak DH, TypeScript, Zig, and Nushell
 * **Git**: Delta pager, SSH signing, git-branchless, and custom aliases
 
@@ -216,6 +218,12 @@ Navigation is remapped from QWERTY's HJKL to NEIO:
 **Ghostty** split navigation:
 
 * `Ctrl+Shift+N/E/I/O`: focus the split in that direction
+
+**Herdr** pane navigation:
+
+* `Ctrl+G N/E/I/O`: focus the pane in that direction
+* `Ctrl+G Shift+N/E/I/O`: swap the pane in that direction
+* Navigate mode uses `N/E/I/O` for directional pane focus
 
 ### fzf-git bindings
 
