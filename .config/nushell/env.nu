@@ -109,7 +109,12 @@ $env.PATH = (
 ##
 if (which mise | is-not-empty) {
     let mise_path = ($nu.default-config-dir | path join "mise.nu")
-    ^mise activate nu | save $mise_path --force
+
+    # Mise 2026.8.12 generates a Nushell wrapper that consumes `mise --help`.
+    # Remove the wrapper's explicit help flag so the command reaches Mise.
+    ^mise activate nu
+        | str replace "command?: string, --help, ...rest: string" "command?: string, ...rest: string"
+        | save $mise_path --force
 
     let cache_dir = ($env.XDG_CACHE_HOME | path join "nushell")
     let required_cache_files = [
