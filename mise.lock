@@ -75,6 +75,18 @@ checksum = "sha256:1150c869de3e68d670eea82d1622b8d3add1bc086750e89a9343adc44944f
 url = "https://github.com/arxanas/git-branchless/releases/download/v0.11.1/git-branchless-v0.11.1-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/arxanas/git-branchless/releases/assets/426563229"
 
+[[tools."github:backnotprop/plannotator"]]
+version = "0.27.8"
+backend = "github:backnotprop/plannotator"
+specifiers = ["latest"]
+
+[tools."github:backnotprop/plannotator"."platforms.macos-arm64"]
+checksum = "sha256:13bd4eae5916c1192c3f71fd4c8722829d7076e781850fd6a0ef2ffc6f16cc6b"
+url = "https://github.com/backnotprop/plannotator/releases/download/v0.27.8/plannotator-darwin-arm64"
+url_api = "https://api.github.com/repos/backnotprop/plannotator/releases/assets/527888935"
+provenance = "github-attestations"
+provenance_verified = true
+
 [[tools."github:carapace-sh/carapace-bin"]]
 version = "1.7.3"
 backend = "github:carapace-sh/carapace-bin"
