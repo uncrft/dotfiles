@@ -1,0 +1,10 @@
+id = "uncrft.workspace-layout"
+name = "Workspace Layout"
+version = "0.1.0"
+min_herdr_version = "0.8.2"
+description = "Start new workspaces with agent, code, and terminal tabs."
+platforms = ["linux", "macos"]
+
+[[events]]
+on = "workspace.created"
+command = ["./workspace-created.sh"]
