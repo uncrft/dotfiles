@@ -38,5 +38,14 @@ esac
   --no-focus \
   >/dev/null
 
+"$herdr" pane wait-output \
+  "$code_pane" \
+  --match '❯' \
+  --source visible \
+  --timeout 10000 \
+  >/dev/null
+sleep 1
+"$herdr" pane send-text "$code_pane" nvim >/dev/null
+"$herdr" pane send-keys "$code_pane" enter >/dev/null
+
 "$herdr" pane run "$HERDR_PANE_ID" fx >/dev/null
-"$herdr" pane run "$code_pane" nvim >/dev/null
