@@ -58,3 +58,7 @@ height = "20%"
 
 [ui]
 agent_panel_sort = "spaces"
+
+# Give open_notification_target an in-app notification to focus.
+[ui.toast]
+delivery = "herdr"
