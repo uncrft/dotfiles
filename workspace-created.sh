@@ -6,6 +6,10 @@ set -eu
 : "${HERDR_TAB_ID:?missing tab ID}"
 : "${HERDR_PANE_ID:?missing pane ID}"
 
+case ${HERDR_PLUGIN_EVENT_JSON:-} in
+  *'"label":"__rift__:'*) exit 0 ;;
+esac
+
 herdr=${HERDR_BIN_PATH:-herdr}
 
 "$herdr" tab rename "$HERDR_TAB_ID" agent >/dev/null

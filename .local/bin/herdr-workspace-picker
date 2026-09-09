@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -eu
+
+herdr=${HERDR_BIN_PATH:-herdr}
+
+# Setting _ZO_FZF_OPTS replaces zoxide's defaults, so preserve them while
+# expanding fzf to fill Herdr's popup. The preview occupies the bottom 30%.
+_ZO_FZF_OPTS='--exact --no-sort --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=100% --info=inline --layout=reverse --tabstop=1 --exit-0 --preview=\command\ -p\ ls\ -Cp\ \{2..\} --preview-window=down,30%,sharp'
+export _ZO_FZF_OPTS
+
+directory=$(zoxide query --interactive --) || exit 0
+[ -n "$directory" ] || exit 0
+
+if [ ! -d "$directory" ]; then
+  printf 'selected directory does not exist: %s\n' "$directory" >&2
+  exit 1
+fi
+
+"$herdr" workspace create \
+  --cwd "$directory" \
+  --label "$(basename "$directory")" \
+  --focus \
+  >/dev/null

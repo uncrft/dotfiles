@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -eu
+
+herdr=${HERDR_BIN_PATH:-herdr}
+bootstrap=${HERDR_RIFT_BOOTSTRAP_PATH:-$HOME/.local/bin/herdr-rift-bootstrap}
+
+printf 'Rift name: '
+IFS= read -r name || exit 0
+[ -n "$name" ] || exit 0
+
+response=$(
+  "$herdr" workspace create \
+    --cwd "$PWD" \
+    --label "__rift__:$name" \
+    --focus
+)
+
+case $response in
+  *'"pane_id":"'*)
+    pane_id=${response#*'"pane_id":"'}
+    pane_id=${pane_id%%'"'*}
+    ;;
+  *)
+    printf 'Could not find the new pane ID in Herdr response:\n%s\n' "$response" >&2
+    exit 1
+    ;;
+esac
+
+workspace_id=${pane_id%%:*}
+"$herdr" workspace rename "$workspace_id" "$name" >/dev/null
+
+"$herdr" pane run \
+  "$pane_id" \
+  "$bootstrap" \
+  "$name" \
+  "$workspace_id" \
+  "$pane_id" \
+  >/dev/null

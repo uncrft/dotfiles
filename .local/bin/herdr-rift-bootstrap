@@ -1,0 +1,83 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -ne 3 ]; then
+  printf 'usage: herdr-rift-bootstrap NAME WORKSPACE_ID PANE_ID\n' >&2
+  exit 2
+fi
+
+name=$1
+workspace_id=$2
+agent_pane=$3
+herdr=${HERDR_BIN_PATH:-herdr}
+rift=${RIFT_BIN_PATH:-rift}
+
+capture=$(mktemp -d "${TMPDIR:-/tmp}/herdr-rift-bootstrap.XXXXXX")
+trap 'rm -rf "$capture"' EXIT HUP INT TERM
+mkfifo "$capture/stdout"
+
+tee "$capture/output" <"$capture/stdout" &
+tee_pid=$!
+
+printf 'Creating Rift and running hooks…\n'
+if "$rift" --shell-cwd create --name "$name" >"$capture/stdout"; then
+  status=0
+else
+  status=$?
+fi
+wait "$tee_pid"
+
+if [ "$status" -ne 0 ]; then
+  printf 'Rift creation failed with exit code %s.\n' "$status" >&2
+  exit "$status"
+fi
+
+directory=$(tail -n 1 "$capture/output")
+if [ ! -d "$directory" ]; then
+  printf 'Rift did not report a valid directory: %s\n' "$directory" >&2
+  exit 1
+fi
+
+printf 'Setting up Herdr workspace…\n'
+"$herdr" workspace rename "$workspace_id" "$name" >/dev/null
+"$herdr" tab rename "${agent_pane%:*}:t1" agent >/dev/null
+
+code_tab=$(
+  "$herdr" tab create \
+    --workspace "$workspace_id" \
+    --cwd "$directory" \
+    --label code \
+    --no-focus
+)
+
+case $code_tab in
+  *'"pane_id":"'*)
+    code_pane=${code_tab#*'"pane_id":"'}
+    code_pane=${code_pane%%'"'*}
+    ;;
+  *)
+    printf 'Could not find the code pane ID in Herdr response:\n%s\n' "$code_tab" >&2
+    exit 1
+    ;;
+esac
+
+"$herdr" tab create \
+  --workspace "$workspace_id" \
+  --cwd "$directory" \
+  --label terminal \
+  --no-focus \
+  >/dev/null
+
+"$herdr" pane wait-output \
+  "$code_pane" \
+  --match '❯' \
+  --source visible \
+  --timeout 10000 \
+  >/dev/null
+sleep 1
+"$herdr" pane send-text "$code_pane" nvim >/dev/null
+"$herdr" pane send-keys "$code_pane" enter >/dev/null
+
+cd "$directory"
+exec fx

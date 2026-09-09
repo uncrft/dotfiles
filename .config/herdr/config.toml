@@ -30,7 +30,7 @@ previous_tab = "prefix+shift+tab"
 next_tab = "prefix+tab"
 new_tab = "prefix+t"
 
-new_workspace = "prefix+w"
+new_workspace = ""
 workspace_picker = "prefix+p"
 switch_tab = "prefix+shift+1..9"
 switch_workspace = "prefix+1..9"
@@ -39,6 +39,22 @@ edit_scrollback = "prefix+s"
 settings = "prefix+comma"
 
 open_notification_target = "prefix+enter"
+
+[[keys.command]]
+key = "prefix+w"
+type = "popup"
+command = "$HOME/.local/bin/herdr-workspace-picker"
+description = "create workspace in directory"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+alt+w"
+type = "popup"
+command = "$HOME/.local/bin/herdr-rift-workspace"
+description = "create Rift workspace"
+width = "50%"
+height = "20%"
 
 [ui]
 agent_panel_sort = "spaces"
