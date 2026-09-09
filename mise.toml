@@ -4,6 +4,7 @@ min_version = "2026.8.12"
 lockfile = true
 github.credential_command = 'command -v gh >/dev/null 2>&1 && gh auth token --hostname "$MISE_CREDENTIAL_HOST" 2>/dev/null || true'
 idiomatic_version_file_enable_tools = ["node"]
+auto_update = true
 
 [env]
 MISE_CARGO_HOME = "{{env.HOME}}/.local/share/cargo"
