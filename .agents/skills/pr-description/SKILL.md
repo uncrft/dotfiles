@@ -1,6 +1,6 @@
 ---
 name: pr-description
-description: Author or revise a pull request description grounded in the actual code changes and repository template. Use when the user asks to write, improve, or rewrite a PR description or body.
+description: Author or revise a pull request description grounded in the actual code changes and repository template. Use when writing or improving a PR body, including as part of a request to create or update a pull request.
 ---
 
 # Pull Request Description
@@ -11,7 +11,6 @@ When invoked with a base-branch argument, use it as the comparison base for insp
 2. Read the PR template from `.github` at the repository root when present, typically `PULL_REQUEST_TEMPLATE.md` or `pull_request_template.md`.
 3. If missing motivation or impact would materially change the description, ask the user before writing. Otherwise, omit uncertain claims.
 4. Fill the template, remove irrelevant sections, and keep remaining sections brief.
-5. Return the description as Markdown, ready to paste into the PR body.
 
 ## Grounding rules
 
