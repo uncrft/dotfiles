@@ -3,22 +3,22 @@
 lockfile_version = 1
 
 [[tools.aws-cli]]
-version = "2.36.29"
+version = "2.36.43"
 backend = "aqua:aws/aws-cli"
 specifiers = ["latest"]
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:18dfdf64e4b13d3f3f7b8e0039a6ca0753020149319f74e7455e0e038cf9a5de"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.29.pkg"
+checksum = "blake3:d53ac95b591ee6652ac0323a065aabce4dd90d8708b252460785a11e21a17b05"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.43.pkg"
 
 [[tools.bun]]
-version = "1.4.0"
+version = "1.4.2"
 backend = "core:bun"
 specifiers = ["latest"]
 
 [tools.bun."platforms.macos-arm64"]
-checksum = "sha256:c669e97f6164e1c96e0701748db98dfa77492908cbd8394c7557134a735de381"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.0/bun-darwin-aarch64.zip"
+checksum = "sha256:90987a3a16d7db556d886ac3d551e7b6d3edf0a1cf43acaed622e8676be1d12f"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-darwin-aarch64.zip"
 
 [[tools."cargo:eza"]]
 version = "0.23.5"
@@ -76,14 +76,14 @@ url = "https://github.com/arxanas/git-branchless/releases/download/v0.11.1/git-b
 url_api = "https://api.github.com/repos/arxanas/git-branchless/releases/assets/426563229"
 
 [[tools."github:backnotprop/plannotator"]]
-version = "0.27.8"
+version = "0.27.13"
 backend = "github:backnotprop/plannotator"
 specifiers = ["latest"]
 
 [tools."github:backnotprop/plannotator"."platforms.macos-arm64"]
-checksum = "sha256:13bd4eae5916c1192c3f71fd4c8722829d7076e781850fd6a0ef2ffc6f16cc6b"
-url = "https://github.com/backnotprop/plannotator/releases/download/v0.27.8/plannotator-darwin-arm64"
-url_api = "https://api.github.com/repos/backnotprop/plannotator/releases/assets/527888935"
+checksum = "sha256:7942044b8cd049adfb2d58812f021861d1f3a0351ad0e1cc595652562a66251c"
+url = "https://github.com/backnotprop/plannotator/releases/download/v0.27.13/plannotator-darwin-arm64"
+url_api = "https://api.github.com/repos/backnotprop/plannotator/releases/assets/554261654"
 provenance = "github-attestations"
 provenance_verified = true
 
@@ -108,26 +108,26 @@ url = "https://github.com/casey/just/releases/download/1.58.0/just-1.58.0-aarch6
 url_api = "https://api.github.com/repos/casey/just/releases/assets/500509965"
 
 [[tools."github:cli/cli"]]
-version = "2.98.0"
+version = "2.100.0"
 backend = "github:cli/cli"
 specifiers = ["latest"]
 
 [tools."github:cli/cli"."platforms.macos-arm64"]
-checksum = "sha256:8cfb027cc5310675f2b830eac8f9865c1155a45ffcf9757f699fdd5a22046ca4"
-url = "https://github.com/cli/cli/releases/download/v2.98.0/gh_2.98.0_macOS_arm64.zip"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/522857972"
+checksum = "sha256:45f9a62da2f6e641a7fad57e2ce39656dfd7ef331372d80a2a2aed65abb01642"
+url = "https://github.com/cli/cli/releases/download/v2.100.0/gh_2.100.0_macOS_arm64.zip"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/542974295"
 provenance = "github-attestations"
 provenance_verified = true
 
 [[tools."github:cloudflare/cloudflared"]]
-version = "2026.8.2"
+version = "2026.9.0"
 backend = "github:cloudflare/cloudflared"
 specifiers = ["latest"]
 
 [tools."github:cloudflare/cloudflared"."platforms.macos-arm64"]
-checksum = "sha256:9042c2c5d8b2de78e60f313d5fb31b6c5c1cebde787a3caf1f2c9588084ac442"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.8.2/cloudflared-darwin-arm64.tgz"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/514389484"
+checksum = "sha256:c0eccb3758420d1f4e46cbf2b8ecde01d9802a154232a817f25133340009fcc7"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.9.0/cloudflared-darwin-arm64.tgz"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/553347590"
 
 [[tools."github:dandavison/delta"]]
 version = "0.19.2"
@@ -140,14 +140,14 @@ url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2
 url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/383662310"
 
 [[tools."github:earendil-works/pi"]]
-version = "0.84.2"
+version = "0.85.1"
 backend = "github:earendil-works/pi"
 specifiers = ["latest"]
 
 [tools."github:earendil-works/pi"."platforms.macos-arm64"]
-checksum = "sha256:c996e888b7f7dce44bcf24f69176ac646c44139d3916bd49a6b28e5a8c5e3a65"
-url = "https://github.com/earendil-works/pi/releases/download/v0.84.2/pi-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/514255762"
+checksum = "sha256:d5f70e3c0cf7398eac239fd0261ee074d98b7ba7f6b43fe3617f052ed5b79d06"
+url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797550"
 
 [[tools."github:jqlang/jq"]]
 version = "jq-1.8.2"
@@ -172,14 +172,14 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.74.3/fzf-0.74.3-darw
 url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/517537091"
 
 [[tools."github:neovim/neovim"]]
-version = "0.12.4"
+version = "0.12.5"
 backend = "github:neovim/neovim"
 specifiers = ["latest"]
 
 [tools."github:neovim/neovim"."platforms.macos-arm64"]
-checksum = "sha256:51ab83afa66d663627c2ab1be43209b0f4e81360d4598b53efaa4d8195f24c89"
-url = "https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-macos-arm64.tar.gz"
-url_api = "https://api.github.com/repos/neovim/neovim/releases/assets/467170626"
+checksum = "sha256:65fb000099e47ca1b762584c484cc833f40e30851a0ec450d4174e16317c1f9b"
+url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-macos-arm64.tar.gz"
+url_api = "https://api.github.com/repos/neovim/neovim/releases/assets/526503741"
 
 [[tools."github:nikitabobko/AeroSpace"]]
 version = "0.21.3-Beta"
@@ -217,14 +217,16 @@ url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-aarc
 url_api = "https://api.github.com/repos/sharkdp/bat/releases/assets/323548442"
 
 [[tools."github:sharkdp/fd"]]
-version = "10.4.2"
+version = "10.5.0"
 backend = "github:sharkdp/fd"
 specifiers = ["latest"]
 
 [tools."github:sharkdp/fd"."platforms.macos-arm64"]
-checksum = "sha256:623dc0afc81b92e4d4606b380d7bc91916ba7b97814263e554d50923a39e480a"
-url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/370661116"
+checksum = "sha256:b67e1836c468e42e411984b56e52fa7abec08c2bd22c867398e7cc134aac5e12"
+url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481346"
+provenance = "github-attestations"
+provenance_verified = true
 
 [[tools."github:sharkdp/hyperfine"]]
 version = "1.20.0"
@@ -257,34 +259,34 @@ url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-a
 url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374577"
 
 [[tools."github:vercel-labs/agent-browser"]]
-version = "0.34.0"
+version = "0.37.1"
 backend = "github:vercel-labs/agent-browser"
 specifiers = ["latest"]
 
 [tools."github:vercel-labs/agent-browser"."platforms.macos-arm64"]
-checksum = "sha256:d680a7a96ab86e9ab9d2b571b12919b761e93682ad1de714bbd5ac849c8d7c9c"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.34.0/agent-browser-darwin-arm64"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/509430073"
+checksum = "sha256:e52f06476ea0f1d14357c1924ce1d7f1bf08279f2642d74ccfa7ee935c46aea1"
+url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.37.1/agent-browser-darwin-arm64"
+url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/550831254"
 
 [[tools."github:vercel-labs/fx"]]
-version = "0.0.6"
+version = "0.0.8"
 backend = "github:vercel-labs/fx"
 specifiers = ["latest"]
 
 [tools."github:vercel-labs/fx"."platforms.macos-arm64"]
-checksum = "sha256:9fc18d5c3429adab254cc2b626c9679e866be26496e09d7beb8754f6c1c586c9"
-url = "https://github.com/vercel-labs/fx/releases/download/v0.0.6/fx-macos-aarch64.tar.gz"
-url_api = "https://api.github.com/repos/vercel-labs/fx/releases/assets/528406140"
+checksum = "sha256:32afc3180c5061b7b19fc8a72107e2b0fac381b2edf0a5decf767b262562fe07"
+url = "https://github.com/vercel-labs/fx/releases/download/v0.0.8/fx-macos-aarch64.tar.gz"
+url_api = "https://api.github.com/repos/vercel-labs/fx/releases/assets/549504004"
 
 [[tools.herdr]]
-version = "0.8.2"
+version = "0.9.0"
 backend = "aqua:herdrdev/herdr"
 specifiers = ["latest"]
 
 [tools.herdr."platforms.macos-arm64"]
-checksum = "sha256:a5d4f4d504d8b309c91f811050559300faba31258425f53c50852fc96f6ae574"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.8.2/herdr-macos-aarch64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/521169108"
+checksum = "sha256:32b53df09872628059c789a69f02a6b8e29e14ddf26711421f3463f70c1aef17"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-macos-aarch64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270162"
 
 [[tools."http:jankyborders"]]
 version = "1.9.0"
@@ -299,13 +301,13 @@ checksum = "blake3:bcdfaf15412fb02a2e3ce5bbf7c7e50aa9dd2f1837bf2e32dfc926ba5c079
 url = "https://github.com/FelixKratz/JankyBorders/archive/refs/tags/v1.9.0.tar.gz"
 
 [[tools.node]]
-version = "24.19.0"
+version = "24.21.0"
 backend = "core:node"
 specifiers = ["lts"]
 
 [tools.node."platforms.macos-arm64"]
-checksum = "sha256:8294b7aa9b03997481c06babf1e8b270c859358f27da57a11509afe537ac381d"
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-darwin-arm64.tar.gz"
+checksum = "sha256:bed7eea5325e1108f32ce5228ddd6a5f0f08a499ee42aa7442aea583702f6057"
+url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-darwin-arm64.tar.gz"
 
 [[tools."npm:@opencode-ai/cli"]]
 version = "beta"
@@ -316,7 +318,7 @@ specifiers = ["beta"]
 allow_builds = '["@opencode-ai/cli"]'
 
 [[tools."npm:skills"]]
-version = "1.5.23"
+version = "1.5.25"
 backend = "npm:skills"
 specifiers = ["latest"]
 
@@ -339,19 +341,19 @@ backend = "core:rust"
 specifiers = ["latest"]
 
 [[tools.turbo]]
-version = "2.10.11"
+version = "2.10.12"
 backend = "npm:turbo"
 specifiers = ["latest"]
 
 [[tools.uv]]
-version = "0.12.5"
+version = "0.12.12"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:5bb0e5fe008a773c3dbcb97ff79cd89e1241464fe9d2f986d52ad8f1b037bd62"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.5/uv-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/514850968"
+checksum = "sha256:46740540b63fdee9a6cb2e19baf3f1f475b850c440a33e63455087a6871263f1"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.12/uv-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/553169165"
 provenance = "github-attestations"
 
 [[tools.zig]]
